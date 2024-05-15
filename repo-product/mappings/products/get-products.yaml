@@ -1,0 +1,8 @@
+-  request:
+      method: GET
+      url: /products
+   response:
+      status: 200
+      file: products/get-products.json
+      headers:
+            content-type: application/json

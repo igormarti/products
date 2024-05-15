@@ -1,12 +1,17 @@
 {
   "name": "products",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:stub": "ng serve --configuration stub",
     "build": "ng build",
+    "build:stub": "ng build --configuration=stub",
+    "build:development": "ng build --configuration=development",
+    "stubmatic": "stubmatic -v --debug -d repo-product -c config.json",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +28,7 @@
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
+    "@angular-architects/module-federation": "^17.0.8",
     "@angular-devkit/build-angular": "^17.3.7",
     "@angular/cli": "^17.3.7",
     "@angular/compiler-cli": "^17.3.0",
@@ -33,6 +39,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "merge-yaml-cli": "^1.1.2",
+    "ngx-build-plus": "^17.0.0",
     "typescript": "~5.4.2"
   }
 }

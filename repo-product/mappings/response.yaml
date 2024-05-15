@@ -1,0 +1,24 @@
+-  request:
+      method: GET
+      url: /hello
+      #post: password=([a-zA-Z0-9]+)
+      headers:
+   # dbset:
+   #    db: sampledb
+   #    key: <% url.2 %>
+   #    strategy: random
+   #    err:
+   #       file: fault.txt
+
+   response:
+      #status: 200
+      #latency: 3000
+      #body: single line response
+      # body: >
+      #   multiple line response
+      #   another line
+      #strategy: random
+      file: response.json
+      # files: ["response.json", {"name":"fault.txt","status":500}]
+      headers:
+            content-type: application/json
