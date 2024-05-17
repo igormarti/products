@@ -1,0 +1,60 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    border: 4px rgb(226, 9, 46) dotted;
+    min-height: 100vh;
+}
+
+.products-list{
+    flex: 60vh;
+    display: flex; /* Enable Flexbox layout */
+    flex-wrap: wrap; /* Allow items to wrap to multiple lines */
+    justify-content: space-between; /* Distribute cards evenly with spacing */
+    margin: 20px;
+}
+
+.card{
+    width: 250px; /* Adjust width as needed */
+    max-height: 500px;
+    margin: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden; /* Prevent image overflow */
+    background-color: #fff;
+    height: fit-content;
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-content{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    align-items: flex-start;
+
+    h4 {
+        margin-bottom: 0;
+    }
+      
+    .card-description {
+        font-size: 14px;
+        color: #333;
+        line-height: 1.5;
+        display: inline-block;
+        max-width: 220px; /* Limita a largura a 30 caracteres mais ou menos */
+        white-space: nowrap; /* Impede quebra de linha */
+        overflow: hidden; /* Esconde o conteúdo que ultrapassa o limite */
+        text-overflow: ellipsis; /* Adiciona "..." ao final do texto */
+      }
+      
+    .card-price {
+        font-weight: bold;
+        color: #007bff;
+    }
+}

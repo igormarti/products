@@ -5,4 +5,5 @@
       status: 200
       file: products/get-products.json
       headers:
+            Access-Control-Allow-Origin: '*'
             content-type: application/json

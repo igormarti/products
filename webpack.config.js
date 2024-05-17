@@ -4,6 +4,10 @@ const ProductModuleFederationConfigPlugin = withModuleFederationPlugin({
 
   name: 'products',
 
+  remotes: {
+    "products-suggested": "http://localhost:4202/remoteEntry.js",    
+  },
+
   exposes: {
     './ProductsModule': './src/app/products/products.module.ts',
   },

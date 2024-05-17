@@ -4,6 +4,8 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsDetailComponent } from './products-detail/products-detail.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './products-routing';
+import { ProductsSuggestedComponent } from '../components/remote/products-suggested/products-suggested.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -12,8 +14,10 @@ import { routes } from './products-routing';
     ProductsDetailComponent
   ],
   imports: [
+    HttpClientModule,
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ProductsSuggestedComponent
   ]
 })
 export class ProductsModule { }

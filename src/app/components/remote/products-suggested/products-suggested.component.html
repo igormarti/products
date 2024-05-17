@@ -1,0 +1,12 @@
+<div>
+    <div *ngIf="isLoading" class="loading" >
+        <h3>Loading...</h3>
+    </div>
+
+    <div *ngIf="isFailedLoadingComponent" class="fail">
+        <h3>Failed to load.</h3>
+        <button (click)="retryLoad()" [disabled]="isLoading" >Try again</button>
+    </div>
+    
+    <mfe-products-suggested/>
+</div>

@@ -1,1 +1,15 @@
-<p>products-list works!</p>
+<div class="container" >
+    <div class="products-list" >
+        
+        <div class="card"  *ngFor="let product of products" >
+            <img [src]="'data:image/png;base64,'+product.image"  />
+            <div class="card-content" >
+                <h4>{{product.name}}</h4>
+                <p class="card-description" >{{product.description}}</p>
+                <span class="card-price" >R$ {{product.price}}</span>
+            </div>
+        </div>
+
+    </div>
+    <app-products-suggested/>
+</div>
