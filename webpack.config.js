@@ -14,6 +14,7 @@ const ProductModuleFederationConfigPlugin = withModuleFederationPlugin({
 
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    // "pubsub-js":{singleton: true, strictVersion: true, requiredVersion: 'auto' }
   },
 
 });

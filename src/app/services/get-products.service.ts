@@ -12,6 +12,6 @@ export class GetProductsService {
   constructor(private http: HttpClient) { }
 
   public execute():Observable<Array<Product>>{
-      return this.http.get<Array<Product>>(environment.baseUrl+'products');
+      return this.http.get<Array<Product>>(environment.baseUrl+'products')
   }
 }
