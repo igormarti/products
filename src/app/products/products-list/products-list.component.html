@@ -14,8 +14,8 @@
                 <div class="card-footer" >
                     <span class="card-price" >R$ {{product.price}}</span>
                     <ul class="card-actions" >
-                        <li><mat-icon (click)="addToCart(product)" [style.pointer-events]="product.isCart?'none':'auto'" matTooltip="{{!product.isCart?'add to cart':'product added to cart'}}" class="mat-icon-lg icon" [style.color]="'blue'" >{{product.isCart===false?'add_shopping_cart':'check'}}</mat-icon></li>
-                        <li><mat-icon (click)="addToFavorite(product)" [style.pointer-events]="product.isFavorite?'none':'auto'"  matTooltip="{{!product.isFavorite?'add to favorities':'product added to favorities'}}" class=" mat-icon-lg icon star-icon" [style.color]="product.isFavorite?'yellow':'#777'"  >star</mat-icon></li>
+                        <li><mat-icon (click)="!product.isCart?addToCart(product):{}" [style.pointer-events]="product.isCart?'none':'auto'" matTooltip="{{!product.isCart?'add to cart':'product added to cart'}}" class="mat-icon-lg icon" [style.color]="'blue'" >{{product.isCart===false?'add_shopping_cart':'check'}}</mat-icon></li>
+                        <li><mat-icon (click)="!product.isFavorite?addToFavorite(product):{}" [style.pointer-events]="product.isFavorite?'none':'auto'"  matTooltip="{{!product.isFavorite?'add to favorities':'product added to favorities'}}" class=" mat-icon-lg icon star-icon" [style.color]="product.isFavorite?'yellow':'#777'"  >star</mat-icon></li>
                     </ul>
                 </div>
             </div>

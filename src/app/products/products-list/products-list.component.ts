@@ -1,21 +1,29 @@
-import { Component, OnInit, Optional } from '@angular/core';
-import { GetProductsService } from '../../services/get-products.service';
+import { Component, OnDestroy, OnInit, Optional } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductInterested } from '../../models/product-interested.model';
 import ProductCount from '../../models/product-count.model';
 import PubSub from 'pubsub-js'
+import { GetProductsService } from '../../services/get-products/get-products.service';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrl: './products-list.component.scss'
 })
-export class ProductsListComponent implements OnInit {
+export class ProductsListComponent implements OnInit, OnDestroy {
 
   products:Array<ProductInterested> = [];
   isLoading:boolean = false;
 
-  constructor(private getProductService:GetProductsService){}
+  constructor(
+    private readonly getProductService:GetProductsService,
+    private readonly storageService:StorageService<Product>
+  ){}
+
+  ngOnDestroy(): void {
+    PubSub.clearAllSubscriptions();
+  }
 
   ngOnInit(): void {
      this.loadingProducts();
@@ -42,13 +50,7 @@ export class ProductsListComponent implements OnInit {
 
   addToCart(product:Product){
     console.log(product)
-    let products:Array<Product> = [];
-    const hasProducts = localStorage.getItem('cart');
-    if(hasProducts){
-      products = JSON.parse(hasProducts);
-    }
-    products.push(product);
-    localStorage.setItem('cart', JSON.stringify(products));
+    this.storageService.set('cart', product);
     const productFound:ProductInterested|undefined = this.products.
     find((pr:ProductInterested) => pr.id===product.id)
     if(typeof productFound !== 'undefined'){
@@ -59,13 +61,7 @@ export class ProductsListComponent implements OnInit {
   } 
 
   addToFavorite(product:Product){
-    let products:Array<Product> = [];
-    const hasProducts = localStorage.getItem('favorities');
-    if(hasProducts){
-      products = JSON.parse(hasProducts);
-    }
-    products.push(product);
-    localStorage.setItem('favorities', JSON.stringify(products));
+    this.storageService.set('favorities', product);
     const productFound:ProductInterested|undefined = this.products.
     find((pr:ProductInterested) => pr.id===product.id)
     if(typeof productFound !== 'undefined'){
@@ -76,17 +72,9 @@ export class ProductsListComponent implements OnInit {
   }
 
   private async checkProductsIsInterestToClient(products:Array<Product>):Promise<ProductInterested[]>{
-    let productsFavorite:[] = [];
-    let productsCart:[] = [];
-    const  hasProductFavorite = localStorage.getItem('favorities'); 
-    const hasProductsCart = localStorage.getItem('cart');
-    
-    if(hasProductFavorite){
-      productsFavorite = JSON.parse(hasProductFavorite);
-    }
-    if(hasProductsCart){
-      productsCart = JSON.parse(hasProductsCart);
-    }
+    const productsFavorite = this.storageService.get('favorities'); 
+    const productsCart = this.storageService.get('cart');
+
     return products.map<ProductInterested>((product:Product):ProductInterested => {
         const isFavorite = productsFavorite.find((pf:Product) => pf.id === product.id);
         const isCart = productsCart.find((pc:Product) => pc.id === product.id);
