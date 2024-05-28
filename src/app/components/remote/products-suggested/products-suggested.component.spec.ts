@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductsSuggestedComponent } from './products-suggested.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 describe('ProductsSuggestedComponent', () => {
   let component: ProductsSuggestedComponent;
@@ -8,7 +10,8 @@ describe('ProductsSuggestedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProductsSuggestedComponent]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA], // Adicione aqui
+      imports: [CommonModule],
     })
     .compileComponents();
     

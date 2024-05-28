@@ -2,7 +2,6 @@ import { loadRemoteModule } from '@angular-architects/module-federation';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Injector, OnInit } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
-import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
