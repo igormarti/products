@@ -1,11 +1,11 @@
-import { loadRemoteModule } from '@angular-architects/module-federation';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Injector, OnInit } from '@angular/core';
-import { createCustomElement } from '@angular/elements';
+import { LoadRemoteModuleWrapper } from '../../../wrappers/loadremote-module.wrapper';
+import { CreateElementWrapper } from '../../../wrappers/create-element.wrapper';
 
 @Component({
   standalone: true,
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Adicione aqui
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [CommonModule],
   selector: 'app-products-suggested',
   templateUrl: './products-suggested.component.html',
@@ -13,8 +13,8 @@ import { createCustomElement } from '@angular/elements';
 })
 export class ProductsSuggestedComponent implements OnInit {
 
-  isLoading = false;
-  isFailedLoadingComponent = false;
+  isLoading!:boolean;
+  isFailedLoadingComponent!:boolean;
   retryLoad: () => void = () => {};
 
   constructor(private injector: Injector) {}
@@ -27,17 +27,16 @@ export class ProductsSuggestedComponent implements OnInit {
     const loadComponent = () => {
       this.isLoading = true;
       this.isFailedLoadingComponent = false;
-      loadRemoteModule({
+      LoadRemoteModuleWrapper.loadRemoteModule({
         type: 'module',
         remoteEntry: 'http://localhost:4202/remoteEntry.js?r='+Date.now(),
         exposedModule: './ProductsSuggestedComponent',
       }).then((MicroModule: any) => {
-        const ce = createCustomElement(
+        const ce = CreateElementWrapper.createCustomElement(
           MicroModule.ProductsSuggestedComponent, {
             injector: this.injector
           }
         );
-
         if (!customElements.get('mfe-products-suggested')) {
           customElements.define('mfe-products-suggested', ce);
         }

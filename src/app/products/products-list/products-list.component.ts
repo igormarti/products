@@ -49,7 +49,6 @@ export class ProductsListComponent implements OnInit, OnDestroy {
   }
 
   addToCart(product:Product){
-    console.log(product)
     this.storageService.set('cart', product);
     const productFound:ProductInterested|undefined = this.products.
     find((pr:ProductInterested) => pr.id===product.id)

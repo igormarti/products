@@ -64,8 +64,6 @@ describe('ProductsListComponent', () => {
     component.loadingProducts();
     await fixture.whenStable();
     fixture.detectChanges();
-    console.log("=================================")
-    console.log(component.products);
 
     expect(component.products.length).toBe(2);
     expect(component.products).toEqual(mockProductsInterested);
