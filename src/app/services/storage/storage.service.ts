@@ -18,6 +18,7 @@ export class StorageService<T> {
   public put(store:string, foreachFunc: (item:T, index?:number, obj?: T[]) => void):void{
     const data:Array<T> = this.getStore(store);
     data.forEach(foreachFunc);
+    this.setStore(store, data); 
   }
 
   public delete(store:string, filterFunc: (item:T, index?:number, obj?: T[]) => boolean):void{
@@ -30,7 +31,7 @@ export class StorageService<T> {
     localStorage.removeItem(store);
   }
 
-  public clear(){
+  public clear():void{
     localStorage.clear();
   }
 

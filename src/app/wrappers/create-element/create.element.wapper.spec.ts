@@ -1,5 +1,5 @@
 import { Injector, Type } from "@angular/core";
-import { NgElement, NgElementConfig, NgElementConstructor, WithProperties, createCustomElement } from "@angular/elements";
+import { NgElement, NgElementConfig, NgElementConstructor, WithProperties } from "@angular/elements";
 import { TestBed } from '@angular/core/testing';
 import { CreateElementWrapper } from "./create-element.wrapper";
 

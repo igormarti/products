@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, Component, Injector, OnInit } from '@angular/core';
-import { LoadRemoteModuleWrapper } from '../../../wrappers/loadremote-module.wrapper';
-import { CreateElementWrapper } from '../../../wrappers/create-element.wrapper';
+import { LoadRemoteModuleWrapper } from '../../../wrappers/load-module/loadremote-module.wrapper';
+import { CreateElementWrapper } from '../../../wrappers/create-element/create-element.wrapper';
+
 
 @Component({
   standalone: true,

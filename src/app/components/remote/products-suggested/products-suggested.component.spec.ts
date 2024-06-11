@@ -3,9 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProductsSuggestedComponent } from './products-suggested.component';
 import { CUSTOM_ELEMENTS_SCHEMA, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoadRemoteModuleWrapper } from '../../../wrappers/loadremote-module.wrapper';
-import { CreateElementWrapper } from '../../../wrappers/create-element.wrapper';
+import { LoadRemoteModuleWrapper } from '../../../wrappers/load-module/loadremote-module.wrapper';
+
 import { NgElement, WithProperties } from '@angular/elements';
+import { CreateElementWrapper } from '../../../wrappers/create-element/create-element.wrapper';
 
 describe('ProductsSuggestedComponent', () => {
   let component: ProductsSuggestedComponent;
