@@ -36,7 +36,6 @@ describe('StorageService', () => {
     expect(service).toBeTruthy();
   });
 
-  // Add more tests for the StorageService methods
   it('getItem should be called and return value', () => {
 
     const mockProducts: Product[] = [
